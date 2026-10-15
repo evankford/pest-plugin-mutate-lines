@@ -30,7 +30,7 @@
         }
     },
     "require-dev": {
-        "mockery/mockery": "^1.6",
+        "mockery/mockery": "^1.6.10",
         "pestphp/pest-dev-tools": "^5.0.0"
     },
     "minimum-stability": "dev",
