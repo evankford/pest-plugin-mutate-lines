@@ -1,0 +1,67 @@
+{
+    "name": "evankford/pest-plugin-mutate-lines",
+    "description": "Scope Pest mutation testing to changed lines (--mutate-diff) or explicit line ranges (--mutate-lines).",
+    "keywords": [
+        "php",
+        "pest",
+        "unit",
+        "test",
+        "testing",
+        "plugin",
+        "mutation",
+        "mutation-testing"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evan Ford"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "pestphp/pest": "^5.0.0",
+        "pestphp/pest-plugin": "^5.0.0",
+        "pestphp/pest-plugin-mutate": "^5.0.0",
+        "symfony/process": "^7.0|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Evankford\\PestPluginMutateLines\\": "src/"
+        }
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.6",
+        "pestphp/pest-dev-tools": "^5.0.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "pest": {
+            "plugins": [
+                "Evankford\\PestPluginMutateLines\\MutateLinesPlugin"
+            ]
+        }
+    },
+    "scripts": {
+        "refacto": "rector",
+        "lint": "pint",
+        "test:refacto": "rector --dry-run",
+        "test:lint": "pint --test",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test:mutate": "pest --mutate --min=100 --parallel",
+        "test": [
+            "@test:refacto",
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    }
+}
